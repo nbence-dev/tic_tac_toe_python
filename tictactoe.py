@@ -21,7 +21,7 @@ class TicTacToe:
             print("You cannot place your X there.")
             return False
         elif self.board[row][column] == "-":
-            self.board[row][column] = "X"
+            self.board[row][column] = "\33[34mX\33[0m"
             self.show_board()
         return True
 
@@ -33,7 +33,7 @@ class TicTacToe:
             x = random.randint(0, 2)
             y = random.randint(0, 2)
             if self.board[x][y] == "-":
-                self.board[x][y] = "O"
+                self.board[x][y] = "\33[31mO\33[0m"
                 print(f"PC placed O at {chr(65 + x)}{y + 1}\n")
                 self.show_board()
 
