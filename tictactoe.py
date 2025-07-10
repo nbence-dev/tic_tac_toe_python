@@ -34,7 +34,7 @@ class TicTacToe:
             y = random.randint(0, 2)
             if self.board[x][y] == "-":
                 self.board[x][y] = "\33[31mO\33[0m"
-                print(f"PC placed O at {chr(65 + x)}{y + 1}\n")
+                print(f"PC placed \33[31mO\33[0m at {chr(65 + x)}{y + 1}\n")
                 self.show_board()
 
                 break
