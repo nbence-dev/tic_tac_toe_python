@@ -17,7 +17,10 @@ class TicTacToe:
     # ]
 
     def player_move(self, row, column):
-        if self.board[row][column] == "X" or self.board[row][column] == "O":
+        if (
+            self.board[row][column] == "\33[34mX\33[0m"
+            or self.board[row][column] == "\33[31mO\33[0m"
+        ):
             print("You cannot place your X there.")
             return False
         elif self.board[row][column] == "-":
@@ -57,39 +60,46 @@ class TicTacToe:
         # If no immediate win or block, pick a random empty cell as before.
 
         # --- CODED SMARTER PC LOGIC BELOW (IN COMMENTS) ---
-        # # 1. Try to win
+        # 1. Try to win
+        # print("PC is making a move...")
+        # time.sleep(2)
+
         # for i in range(3):
         #     for j in range(3):
         #         if self.board[i][j] == "-":
-        #             self.board[i][j] = "O"
-        #             if self.check_win("O"):
-        #                 print(f"PC placed O at {chr(65 + i)}{j + 1}")
+        #             self.board[i][j] = "\33[31mO\33[0m"
+        #             win_result, winner = self.determine_winner("\33[31mO\33[0m")
+        #             if win_result and winner == "\33[31mO\33[0m":
+        #                 print(f"PC placed \33[31mO\33[0m at {chr(65 + i)}{j + 1}")
+        #                 print()
         #                 self.show_board()
         #                 return
         #             self.board[i][j] = "-"
-        #
+
         # # 2. Block player win
         # for i in range(3):
         #     for j in range(3):
         #         if self.board[i][j] == "-":
-        #             self.board[i][j] = "X"
-        #             if self.check_win("X"):
-        #                 self.board[i][j] = "O"
-        #                 print(f"PC placed O at {chr(65 + i)}{j + 1}")
+        #             self.board[i][j] = "\33[34mX\33[0m"
+        #             win_result, winner = self.determine_winner("\33[34mX\33[0m")
+        #             if win_result and winner == "\33[34mX\33[0m":
+        #                 self.board[i][j] = "\33[31mO\33[0m"
+        #                 print(f"PC placed \33[31mO\33[0m at {chr(65 + i)}{j + 1}")
+        #                 print()
         #                 self.show_board()
         #                 return
         #             self.board[i][j] = "-"
-        #
+
         # # 3. Otherwise, random move
         # while True:
         #     x = random.randint(0, 2)
         #     y = random.randint(0, 2)
         #     if self.board[x][y] == "-":
-        #         self.board[x][y] = "O"
-        #         print(f"PC placed O at {chr(65 + x)}{y + 1}")
+        #         self.board[x][y] = "\33[31mO\33[0m"
+        #         print(f"PC placed \33[31mO\33[0m at {chr(65 + x)}{y + 1}")
         #         self.show_board()
         #         break
-        #
+
         # # Helper function needed:
         # # def check_win(self, symbol):
         # #     # Check rows, columns, and diagonals for a win for 'symbol'
